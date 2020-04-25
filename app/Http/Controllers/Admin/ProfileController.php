@@ -10,12 +10,13 @@ class ProfileController extends Controller
     //
     public function add()
     {
-        return view('admin.profile.create');
+        return view('admin.profile.create/admin/profile/create');
     }
     
     public function create()
     {
-        return redirect('admin/profile/edit');
+        \Log::debug(__LINE__.' '.__FILE__);
+        return view('admin.profile.create');
     }
     
     public function edit()
