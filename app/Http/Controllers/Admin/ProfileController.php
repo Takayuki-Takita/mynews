@@ -19,8 +19,7 @@ class ProfileController extends Controller
     
     public function create(Request $request)
     {
-        \Log::debug(__LINE__.' '.__FILE__);
-        
+
         $this->validate($request, Profile::$rules);
         $profile = new Profile;
         $form = $request->all();
