@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\News;
 use Carbon\Carbon;
 use App\History;
+use Storage;
 
 class NewsController extends Controller
 {
@@ -28,6 +29,7 @@ class NewsController extends Controller
       // formに画像があれば、保存する
       if (isset($form['image'])) {
         $path = $request->file('image')->store('public/image');
+        putFile('/',$form['image'],'public');
         $news->image_path = basename($path);
       } else {
           $news->image_path = null;
@@ -71,6 +73,7 @@ public function update(Request $request)
       $news_form = $request->all();
       if (isset($news_form['image'])) {
         $path = $request->file('image')->store('public/image');
+        putFile('/',$form['image'],'public');
         $news->image_path = basename($path);
         unset($news_form['image']);
       } elseif (isset($request->remove)) {
